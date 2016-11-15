@@ -1,0 +1,2194 @@
+commit 9edaaf6f5b32615c35f2ea605a74951eb56a63f7
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 11:52:24 2014 -0800
+
+    unbreak arrow keys handling
+
+commit 181c1e0f2c71799eb0101d270bbd2297053323d2
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 11:11:36 2014 -0800
+
+    include sys/wait.h for waitpid
+
+commit 98a8c6a3f228055cf0fba4fa439e3e4a6c241ebc
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 11:00:35 2014 -0800
+
+    declare prepare_scorer()
+    
+    Which is used by main.c
+
+commit e3aca61a2df84a4f5762519b33551fc7e32f7f82
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 10:57:56 2014 -0800
+
+    do not allow negative indexes for char tables
+    
+    Because char can be signed
+
+commit 27571b1269c1b5d87e3bf48d8a61dbfa80af2782
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 10:53:58 2014 -0800
+
+    avoid array of 0 elements
+    
+    Which upsets clang's sanitizer
+
+commit 9b4f5cce30ef5ee5c9718e84c53ae6a05362f506
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 10:53:43 2014 -0800
+
+    include vector.h into filtration.h
+    
+    Because we're using struct vector
+
+commit a089e7a5aca23775c37ae293ccb51c6860204719
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 10:52:53 2014 -0800
+
+    fixed filtration.h variables to be extern
+    
+    Not sure how I managed to miss it earlier.
+
+commit 5659a13ee6040386b4456860096f3ace416c9349
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 10:39:58 2014 -0800
+
+    debian package does not really build-depends on automake
+
+commit 7a71726407f851f3443a6a71f73cbaee449671f0
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 00:42:27 2014 -0800
+
+    switched from gthread to pthread
+    
+    Because gthread is giving me warnings and pthread is quite universal
+    anyways.
+
+commit db345e1a791755dd282a4b8c35325d0a26d09dee
+Merge: 72c08d3 4af2684
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 19 00:25:04 2014 -0800
+
+    Merge remote-tracking branch 'avsej/master'
+    
+    * avsej/master:
+      Allow to pick mlocate.db from current directory
+
+commit 72c08d328c7b75b914ef4acd57993aa40c48be8d
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 18 23:30:58 2014 -0800
+
+    updated to newer check library
+    
+    We'll likely start failing on older version, but given it's just
+    tests, it seems fine.
+
+commit 0d69610758d5a01974a3740787205f7b006340a9
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 18 23:24:18 2014 -0800
+
+    automatically enable openmp if available
+    
+    For some speedup on multicore machines
+
+commit 504659ab6a2130cd4c63712b5e8df206ebd9cd09
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 18 23:20:58 2014 -0800
+
+    gitignore compile and test-driver
+
+commit e97219c2ceee571aea50705058af7b0ca008391a
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 4 19:28:26 2014 -0800
+
+    support moving selected row via C-{n,p}
+
+commit 67ac58839dde24198915c01c8104fa326d36bcef
+Merge: eed4e5e f2f686e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 31 16:09:15 2012 -0800
+
+    Merge remote-tracking branch 'github/master'
+
+commit eed4e5ea2aa51d9cfa5b5dfc39ea9efde408b00f
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 31 16:06:29 2012 -0800
+
+    precompute length of filename part
+    
+    so that we don't have to do strlen inside sort
+
+commit de786848aca00986d67b1b7a2d9b3ee98950270b
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 31 16:04:37 2012 -0800
+
+    optmized at_word_start computation
+    
+    Given that previous_delimiter can be set to true for (i == 0) we can
+    get rid of (i == 0).
+
+commit ee9da86a66d2579a46d65a1d63c998bb25e3aac5
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 31 15:53:55 2012 -0800
+
+    speed up scored delimited matching and normalization via table
+
+commit 13179684cc263136f14eff3e2deca44c517bbb6a
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 31 14:51:01 2012 -0800
+
+    use gettimeofday (wall clock) for timing
+
+commit 8f58782a09c53cc0fe06755e6e52249d7f4c5bf9
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 31 14:50:29 2012 -0800
+
+    made files_vector extern in header file
+
+commit 4af26847f9a80253deefab891fe8c0639fc114a9
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Tue May 15 11:10:06 2012 +0300
+
+    Allow to pick mlocate.db from current directory
+
+commit f2f686e8ee34df7ee8141e46e765545e96beadb9
+Merge: b9740f1 e62d429
+Author: Aliaksey Kandratsenka <alkondratenko@gmail.com>
+Date:   Sat May 12 07:55:31 2012 -0700
+
+    Merge pull request #8 from avsej/master
+    
+    Updates to gpicker.vim
+
+commit e62d429ae77214341351ab85b598c3b3ff7f19d5
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Sat May 12 12:27:01 2012 +0300
+
+    Add mlocate chooser
+
+commit b9740f1da410ef00b03fef579701939d755967ec
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Apr 8 13:04:24 2012 -0700
+
+    mention some new features in gpicker.el
+    
+    Particularly imenu and isearch
+
+commit 2d9c4d714034b05cc7998b0355ef902cbf0639b0
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Apr 8 12:28:56 2012 -0700
+
+    addressed autoconf warning about AC_LANG_SOURCE
+
+commit 9b895850f9410c06842ff055952376c0174547c1
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Apr 8 12:26:41 2012 -0700
+
+    updated gnulib
+
+commit ef5d86dba49d99bb528b01ea5a00a3da575ff75b
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Apr 8 12:14:44 2012 -0700
+
+    fail gpicker is child process exits with bad status
+
+commit d92373fc469760bff106811756054bfeee9d89fd
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Apr 8 12:30:25 2012 -0700
+
+    ship gpicker-script-example in source tarball
+
+commit a1bbe927fedda22e18ef9418edf0c17d457eddea
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Apr 8 11:37:32 2012 -0700
+
+    implemented better script project type in gpicker itself
+    
+    .gpicker-script will be spawned from gpicker itself and only needs to
+    output \0 separated entries.
+
+commit 0fee28231e66312d9a91a528c18487201dee03c9
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Apr 7 21:49:02 2012 -0700
+
+    implemented script project type inside gpicker.el
+    
+    Project type script will spawn .gpicker-runner script inside project
+    instead of gpicker. That script can do any magic.
+    
+    This is particulary useful for multi-repository projects. See
+    contrib/gpicker-runner-example
+
+commit 3b33671f3184534ed3d53b38b46f3f9bb6481807
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Apr 7 20:31:09 2012 -0700
+
+    addressed compiler warning about goto-line
+    
+    It told me goto-line is user command.
+
+commit 0000d3171848ef532bd91e19c3b51436b21cbae9
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Apr 7 20:27:51 2012 -0700
+
+    fixed and improved gpicker-imenu
+    
+    Particularly nested items now work and *Rescan* works as well
+
+commit 26b604a2cac6f0c7633d8ebabf7219b703775b68
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Apr 7 20:27:11 2012 -0700
+
+    don't mess with ido by default
+    
+    There's experimental ido integration by it's quite broken and I don't
+    care much. So just don't activate it by default.
+
+commit 63528ec1213935e5212293018d6cb9241d43148a
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Apr 7 20:25:58 2012 -0700
+
+    unbreak gpicker-call-find-function
+
+commit 50c9fd8aa0286be03afbfa9b6e5d12beba5b21fe
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Apr 7 20:25:43 2012 -0700
+
+    fixed save-excursion warning in gpicker.el
+
+commit ef3b5a7b0ee6d3377d761f078fd8eae423c2aac0
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Apr 7 20:24:43 2012 -0700
+
+    require 'cl when compiling
+    
+    Also officially require imenu as well
+
+commit eac45e85c3aa51cb83ebad87fc7598068825098b
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Apr 7 20:24:17 2012 -0700
+
+    note kbd macro in gpicker.el doc-header
+
+commit 5a1ee943015b8ef4ed5e06ef6498e3907b1ee0b5
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Apr 7 20:23:50 2012 -0700
+
+    gitignore gpicker.elc
+
+commit d87a141ecb224e272d52629e7e50838ac3823e90
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 15 18:08:48 2011 -0700
+
+    unbreak gpicker-complete-list by using rare dir separator
+    
+    We don't want dir/file separation at all in this case. So picking byte
+    1 as directory separator makes it effectively off.
+
+commit 14cd0f66163e0e241f2d676981cf73b16f813a91
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Mar 14 08:32:33 2011 -0700
+
+    fixed icc warning
+
+commit 562d398054f5c3718a69a8f0449c9361cc52e1c9
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 16:25:16 2010 +0200
+
+    updated manpage
+
+commit fb411323b4005c4f2637319fc29f9aa6e2ad50ef
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 16:17:38 2010 +0200
+
+    updated OSX readme
+
+commit 1870665e2444cc34008a0bfca19525a4f09fbc91
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 15:48:35 2010 +0200
+
+    [unclear licensing] added metainfo for building OSX app. bundle
+    
+    This is heavily based on work of John Ralls at
+    https://github.com/jralls/gnucash-on-osx
+
+commit 5562d358b4be69516f76070ab63f8925e3c576f9
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 13:21:30 2010 +0200
+
+    less special cases for OSX
+
+commit daf63cec0a8b6b263d34f1b01e03d016404f9005
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 13:10:24 2010 +0200
+
+    include string.h from lib/
+    
+    So that we always have prototype of memrchr
+
+commit 9340ba76ac16dfbac3220f23509046cfbf88e0ba
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 13:03:51 2010 +0200
+
+    link against libgnu.a
+
+commit d37755294ac97cba2ade8a1ff5277b55542cef2e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 12:54:30 2010 +0200
+
+    unbreak Makefile.simple
+
+commit 6ce6da35aa117047a77a77a1bf593d9d0efb9f16
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 12:48:32 2010 +0200
+
+    load config.h early
+    
+    So that GNU_SOURCE define from gnulib is effective
+
+commit 7b04b537d090ea803395361469961c32d5918643
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 12:39:47 2010 +0200
+
+    dont define GNU_SOURCE anymore
+
+commit adc44ac1662894bf687e6e2e6fba9b56fd54452e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Nov 9 12:36:46 2010 +0200
+
+    imported memrchr from gnulib
+
+commit c841c6eec5ac46eec4c29349e71fc77cb52c26ac
+Merge: 169bfc4 75401ce
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 22:21:51 2010 +0200
+
+    Merge remote branch 'avsej/master'
+
+commit 169bfc46fe1d7f83dba4e47547cf3bbf97ec3839
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 20:23:40 2010 +0200
+
+    partial compile for length of 2 too
+
+commit 64c0e5d5d281406d9bcb02d5a717d329a98c8160
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 20:19:22 2010 +0200
+
+    unsuccessful openmp parallelization
+
+commit 7153648dbd40193d2bf63a881b23d471a0ad410e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 16:32:26 2010 +0200
+
+    .gitignore-ed .gcda files
+
+commit 5bf6d874805d6646136aabcab603a9e0df8d7cae
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 12:24:51 2010 +0200
+
+    added loading timing
+
+commit 419206882f69b7b03e4f3612d99d624dfe1006eb
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 11:34:18 2010 +0200
+
+    really inline score_string_prepared_inline
+    
+    So that score_string_prepared_1 is effective.
+
+commit 7180c8b8f2d755b2b9485a661f9940aabdc1b55d
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 11:33:19 2010 +0200
+
+    shortened struct filter_result a bit
+
+commit 5e15eacd14363996f67af6f9c0c1c1a7f8a35144
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 11:32:34 2010 +0200
+
+    added rule to compile .s for easy optimizer decision inspection
+
+commit 75401ce6cb7c00a9e4559e590e1d1cf53ef9e917
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Sat Oct 2 18:40:35 2010 +0300
+
+    require common lisp extension
+
+commit 90e6817266a310fc3cb1fb547d629e49572a1222
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 10:09:05 2010 +0200
+
+    unbreak gpicker-simple
+
+commit dde3bfea6a96498c216843bbc3d7c028ec31a3e5
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 6 09:47:22 2010 +0200
+
+    implemented uninit_filter
+
+commit cb4be332c9427c6e381a28b80688b4504e77f15e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Oct 27 13:58:39 2010 +0300
+
+    tiny syntactic cleanup of previous commit
+
+commit 3a6cca365da55929d0cd33b43cf61e04b88c092c
+Author: Yura Tolstik <yltsrc@gmail.com>
+Date:   Tue Oct 26 13:51:27 2010 +0300
+
+    add print pattern if nothing matched option
+
+commit 48e35dbfbf6389db735f0412dd38f2d68689cc18
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Oct 17 13:35:36 2010 -0700
+
+    added gpicker-isearch
+
+commit 75e21c671cb6673fe756da406b30f9ada7fac493
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Oct 17 13:35:11 2010 -0700
+
+    added --ignore-positions option
+
+commit 361e7faa47dae76d676a2a09cee11250d88a1535
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Oct 17 13:34:32 2010 -0700
+
+    use -l for gpicker-imenu and friends
+
+commit 09ccf17b357f2ea5307c057704c4845592102641
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Oct 17 13:30:44 2010 -0700
+
+    added ' ', '\'' and '"' to scorer delimiters
+
+commit 610fe5511a00bf97412f1e9085c573b1c2812cce
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Oct 17 12:42:05 2010 -0700
+
+    added option to print index of selection
+
+commit 3cbe28aea678a84f860239e044a98b4d1f65beef
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Oct 17 11:59:05 2010 -0700
+
+    added support for -S (dont-sort) to main program too
+
+commit 4388c57bac1e5174d130369077a9326853030f14
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Oct 17 11:49:49 2010 -0700
+
+    implemented -l option to align text to left
+
+commit 642d5a2c9650fcbd59b453c6a841c18c14805039
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Sep 23 21:03:53 2010 +0300
+
+    really ignore extra pattern characters
+
+commit 9c9dd2ce7e218ef7a2b2c4ab45e4ffa6d8b59785
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 22 21:32:27 2010 +0300
+
+    ignore chars after MAX_PAT_LENGTH instead of failing match
+
+commit 0091739e53c7b27cd2106a35b87cdce6f7a98761
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 22 21:26:00 2010 +0300
+
+    fixed dirlength computation for mlocate project type
+
+commit 97810dbd54e74d7c89dc0d56759ea14e5d93be62
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 8 14:48:31 2010 +0300
+
+    advertise mlocate project type support
+
+commit 06f0fb886490c3fa8ce9f7d68c4b3cf8fc5562aa
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 8 14:44:12 2010 +0300
+
+    fixed eating prefix for mlocate project type
+
+commit affd8359159162e98ac47786919b1feb8fb424a2
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 8 13:21:58 2010 +0300
+
+    added support for not eating mlocate prefix
+    
+    Pass empty value for --eat-prefix argument for that.
+
+commit 6632d1d44d3bed0098bf691f3a9a4d37390460d2
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 8 13:01:20 2010 +0300
+
+    fixed formatting of long line
+
+commit c5da81e3291ba063f1c031cbca61a43ed68acca3
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 8 13:01:08 2010 +0300
+
+    support gpicker_load_stdin_too for mlocate type too
+
+commit 7af32992fd9bcfdf6276fa89ace8b7621a6d6a38
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 8 12:56:29 2010 +0300
+
+    use plain read instead of less portable mmap
+    
+    Win from mmap is too small to warrant any potential issues
+
+commit cc274560958a081668f9d80705bc0e7cf07a48a7
+Merge: ea34e08 90df5bc
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 8 12:42:19 2010 +0300
+
+    Merge remote branch 'avsej/master'
+
+commit 90df5bca6cb3a0bda84abf6d0b64c19df1aa98ac
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Tue Sep 7 18:51:18 2010 +0300
+
+    fix mlocate source
+
+commit ea34e086746b96194c436a3b31ce9f85fcbef1ab
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Sep 8 11:57:39 2010 +0300
+
+    Revert "rename xmalloc to gpicker_xmalloc"
+    
+    This reverts commit 65c5056361c4dd84626769b3933eaafda89061d5.
+    
+    We did it as part of preparation for splitting core gpicker into a
+    library, but that plans is not abandoned. gpicker is meant to be used
+    as external process.
+
+commit 5d3ead7acdf1c145e4fe6a248300c41cbfe86efd
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Sep 2 23:02:10 2010 +0300
+
+    added imenu & tags navigation for Emacs
+
+commit 671ebfdf12e3b502d1afeb83cfb1d7379f2b0552
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Aug 24 10:56:16 2010 +0300
+
+    .gitignore INSTALL
+
+commit 65c5056361c4dd84626769b3933eaafda89061d5
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Mon Aug 23 11:57:17 2010 +0300
+
+    rename xmalloc to gpicker_xmalloc
+
+commit 9785a127c6755bf91e6f13d1bfda1ca902f9dadd
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Mon Aug 23 11:25:54 2010 +0300
+
+    use autoreconf to do all automagic
+
+commit bb225485454dd8ab7f64d8c8da4a99946eb2ab7a
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Mon Aug 23 13:25:53 2010 +0300
+
+    fix compile warning in check_parents function
+    
+    main.c: In function ‘check_parents’:
+    main.c:516: warning: ignoring return value of ‘fchdir’, declared with attribute warn_unused_result
+
+commit 7c58cce3bfc428e8f8ff62fec95fcfc746ac0f85
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Aug 23 12:23:10 2010 +0300
+
+    don't keep INSTALL in src tree it's added by autotools
+    
+    Spotted by Sergey Avseyev
+
+commit a20a2ff6f039f8805f64315659a0ddc61ecf04de
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Tue Aug 17 14:03:40 2010 +0300
+
+    escape path for gpicker and results for vim
+
+commit ff0e034cb92c4953b6224bd284a0903cb927b1ff
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Tue Aug 17 13:53:22 2010 +0300
+
+    update keybindings and remove ri browser
+
+commit e437e177209a2e35c0b6412c61d9f88dd4dc1982
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon May 31 11:27:53 2010 +0300
+
+    don't do gtk_init. gtk is inited as a side-effect of parse_options
+
+commit c30601c18b7b64174a7b9a314e078c0d2b12f9cc
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 23 15:48:37 2010 +0300
+
+    debianize sources in ./bootstrap
+
+commit 28ba56e7850cf737df6055c2e2b7124937239ea2
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 23 14:54:10 2010 +0300
+
+    set project version from git describe (again)
+
+commit b8598e347ad51622c0829256e9cfa8cc6b99a078
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 23 14:47:05 2010 +0300
+
+    removed unnecessary call to gtk_widget_realize
+
+commit cfc3d3303358e4bdd7987465f9f8a810f02046f4
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 23 14:46:32 2010 +0300
+
+    fixed silly bug
+
+commit 37f4bf428fadef17f893ecf96e50629dae16fc42
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 23 14:38:47 2010 +0300
+
+    correctly detect gdk on x11
+
+commit 90fdcd9c0f934d7b9b4a6460ce9a22acf39b74a1
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 23 14:28:20 2010 +0300
+
+    don't focus name entry if it's already focused
+    
+    this prevents lose of cursor position and selection of entire entry
+    text
+
+commit d49959481123dc037b5d98f6fce2c7dab52d362e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 23 14:25:56 2010 +0300
+
+    moved window showing code out of biuld_ui
+
+commit db35d65681d3aa37b87831eb5d7c87c7676936eb
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Jan 4 14:46:03 2010 +0200
+
+    gpicker v2.0.2
+
+commit 597fba0f4d58785663ce2ffbbd58c9a3c06c4016
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Jan 4 14:45:47 2010 +0200
+
+    dont use gtk_widget_get_window, which is too new for debian lenny
+
+commit 3a365a6c440e3728fb1c7632b643b6996c1bd7ff
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Jan 4 14:30:24 2010 +0200
+
+    gpicker v2.0.1
+
+commit 400124646b017f56a4ee5ee5baa20f21be51f05b
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Jan 4 14:23:12 2010 +0200
+
+    another trick to force gpicker to popup on top
+    
+    The problem that's addressed is that netbeans/emacs often triggers
+    gpicker by keypress and it's possible that netbeans will will receive
+    key release event after gpicker is started but before the window is
+    displayed. This seems to be quite typical on KDE4 with window
+    compositing turned on. In such case _WM_TIME of gpicker will be older
+    than _WM_TIME of netbeans causing window manager to keep netbeans
+    window above gpicker's.
+
+commit 2d848cbf6b400efac5152b73b13822e64961f6da
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Jan 4 13:11:38 2010 +0200
+
+    better positioning of main window
+
+commit 74f84a19b9407a680c34d861154ffd4679c9f3ac
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 3 03:47:28 2010 +0200
+
+    real gpicker v2.0.0
+
+commit 7c240194e384fdd3c9f53abee3e5cadbe4f5a98e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 3 03:47:28 2010 +0200
+
+    gpicker v2.0.0
+
+commit f20c28a3fdd327f3462dadae372112d1ae452bd2
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 3 03:44:50 2010 +0200
+
+    [score_string_prepared_inline] use translated pattern instead of original
+
+commit 28a9840ec230f0e842aa5a9dc95ad0eaffd420a3
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 3 03:40:22 2010 +0200
+
+    allow matching camel-case word starts with '-' delimiter
+    
+    a-r now matches ActiveRecord
+
+commit ba5bca5b6f09b8381a2710b92e63d32f4d77de90
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 3 03:17:49 2010 +0200
+
+    updated README
+
+commit aaa2d0c6561b4f406ebd0773189adf72b47e5285
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Jan 3 03:09:16 2010 +0200
+
+    implemented printing of scores in gpicker-simple
+
+commit c44e7b6df4ab2d174083eb55494e4d494e09166e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 23:02:07 2010 +0200
+
+    implemented 'backward' directory name separator
+    
+    It is now possible to enter directory/namespace filtration pattern
+    after base pattern. Use '\', which is a special 'backwards' directory
+    separator for such cases. 'bar\foo' is now equivalent to
+    'foo/bar'. There are no command-line option for changing that
+    separator.
+    
+    General use case for that feature is that you often start filtering by
+    base name and look at what you get. You use directory name filtration
+    usually only after you look at base name filter results. This feature
+    helps you to avoid extra key presses precisely for that case. Just
+    type '\' and start typing pattern for directory.
+
+commit ee4f3dbccb22f8339e687305147dddba04360e06
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 22:38:35 2010 +0200
+
+    recognize "*" as separator
+
+commit a1471211a558a9bbe90dc6a74935b3c418018956
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 22:36:57 2010 +0200
+
+    fixed switching to non-file backed buffer in gpicker.el
+
+commit db112230e54ce837773ebd727d4ec2a0d5d2ac41
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 21:37:56 2010 +0200
+
+    updated NEWS
+
+commit 119dea95c62d65950064ce4297ae498fae953a56
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 22:29:39 2010 +0200
+
+    updated IDEAS
+
+commit 73b6da3d2d5ead8269e9126d2b437834cdfab1fa
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 20:55:34 2010 +0200
+
+    Revert "set project version from git describe"
+    
+    This reverts commit aad251e80cc6694def7a7c438e51e5681efab34f.
+
+commit 0cf4b41ef531c688c40017d4764d469ed85e6fb0
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 20:43:14 2010 +0200
+
+    added manpages to EXTRA_DIST
+
+commit 82987f2639727bb14b1404ee8799354782a7f8d7
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 20:42:01 2010 +0200
+
+    added missing compiler.h to _SOURCES list
+
+commit d5ce06ef47fb4b9b1fdf3dff634ae7e154bfc7a5
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 20:35:41 2010 +0200
+
+    debianized gpicker
+
+commit 828680e9093f4329cd053c09eb7e236bc3bba88b
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 20:20:33 2010 +0200
+
+    removed obsolete fasteri
+
+commit d2e5b2754922c706047342c363cb233063e8ef20
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 20:01:26 2010 +0200
+
+    added manpages
+
+commit 3af740ef25f03ae54785a408c7bb65d0538c5a40
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 20:01:15 2010 +0200
+
+    added -M to help output of gpicker-simple
+
+commit 8a1b5b4d91cb7f3e38983179235ed5e208cb25a9
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 18:37:03 2010 +0200
+
+    initial support for utf8
+    
+    we don't support case-insensitive matches for non-ascii chars yet
+
+commit e22a63a32675306fbf2046f30e9a888bd2d22ace
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 18:23:53 2010 +0200
+
+    fixed computation of positions for adjacent matchings
+
+commit b190993532c4add6a7c74b46150b3ebe6303eed6
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 16:54:14 2010 +0200
+
+    implemented printing of matches in gpicker-simple
+
+commit 23cd90141c708efd309bfb06f2bdd7aeabcb4b66
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 15:59:36 2010 +0200
+
+    support single letter options for main gpicker too
+
+commit a705b2b5355a003a1e9e26471a314b5fd1031032
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Jan 2 15:57:06 2010 +0200
+
+    abstracted away gcc-specific __builtin_xxx stuff
+
+commit 067a94aefd1edbcc35aef94c5405b86cb552f01a
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Jan 1 10:27:15 2010 +0200
+
+    fixed 'make dist'
+
+commit 036c6aff42820162634fb8461a24a8bb327e9ca8
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Jan 1 10:21:52 2010 +0200
+
+    include Makefile.simple into dist archive
+
+commit 5f54cfa09baca47c2f253042239cb311e5c4a2e6
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Jan 1 10:18:19 2010 +0200
+
+    [emacs] initial ido integration
+
+commit 1179309e2329c307e1f423a141717b72bbb3b626
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Jan 1 10:17:03 2010 +0200
+
+    implemented dont_sort option for gpicker-simple
+
+commit e1a1504d5c15b5ac66035c47e01a1bab83132542
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Jan 1 00:04:35 2010 +0200
+
+    allow building gpicker-simple without any dependencies at all
+
+commit 23d2f1327fdd77a8b1271cec2e5e963252d20764
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 31 23:25:43 2009 +0200
+
+    introduced gpicker-simple -- pure command-line gpicker implementation
+
+commit 5d34f08c97bb5d0ef409a40680fd8591d09671d6
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 31 23:33:24 2009 +0200
+
+    removed PKGDATADIR define. It's not used anymore.
+
+commit 8b99fb4910134d6b327425d8587258204e239381
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 31 23:24:25 2009 +0200
+
+    liberated loading facility from glib
+
+commit 074b5a148de1f3615d5bf9ab590832ebdd52434f
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 31 22:01:08 2009 +0200
+
+    fixed warnings from compiler
+
+commit b8a3b31918e2cc08c152625ee72c092c38668287
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 31 20:32:05 2009 +0200
+
+    generalized async filelist loading facility into do_with_main_loop
+
+commit 20f7d652d9daac91d329db78e16ba535f78b09ed
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 31 18:57:04 2009 +0200
+
+    allow picking no-file buffers in gpicker
+
+commit 0a2151606ec42a67d019ec949f06d51d461f3202
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 31 15:29:13 2009 +0200
+
+    follow sylinks in default gpicker find invokation
+
+commit 96fe1f8f4b39a5eda89d98adc2919c065fffc804
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Mon Dec 28 18:45:05 2009 +0200
+
+    add 'show version' switch
+
+commit fa56795c7747220f6357466ad4952450fc24610c
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 28 17:34:27 2009 +0200
+
+    focus name entry after loading data to prevent some weird gtk behaviour
+
+commit 80b3d5963ec4eb2ec32a7231c284938545f1fce7
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 28 11:55:19 2009 +0200
+
+    fixed gpicker window sizing for multimonitor setups
+
+commit aab559ade94a4c98aeb60af264c34735a9131244
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 28 10:54:22 2009 +0200
+
+    include README.osx into dist tarball
+
+commit 5e139e0eeb94a8d8a8eff4543570f294be3f7553
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 28 10:50:31 2009 +0200
+
+    added Sergey into AUTHORS
+
+commit 7fdbf1c847ef8ed9a9c36672e29472818d4346d8
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 28 10:49:12 2009 +0200
+
+    include IDEAS and CodingStyle to dist tarball
+
+commit 8812524e0bfec61e0dbca87a318076afa210c8fd
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 28 10:46:10 2009 +0200
+
+    generate ChangeLog from git log
+
+commit b031902996deba7711dd26f8f3673f2fc00209c4
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 28 10:29:34 2009 +0200
+
+    don't install gpicker.{el,vim}. Simply distribute them in tarball
+
+commit aad251e80cc6694def7a7c438e51e5681efab34f
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 28 10:18:38 2009 +0200
+
+    set project version from git describe
+
+commit ab5371d9b0a1785e768358da5b196472142dce75
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Dec 25 19:42:38 2009 +0200
+
+    fixed segfault caused by use of too long prepared pattern
+
+commit c4de53dedf6ea46c2ed7e37779cbe96f1b0e98bc
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Dec 25 19:38:34 2009 +0200
+
+    set gpicker dimensions to half of screen dimensions
+
+commit d1cf7cdcd6b08b0533fa6e8763d0ad47fa835e80
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Dec 25 19:03:52 2009 +0200
+
+    don't bother displaying UI window before loading data
+    
+    We're loading in separate thread now (except mlocate project type
+    which is broken anyway). So this change allows us to start loading
+    data few milliseconds earlier.
+    
+    Note that this may cause issues on OSes which will not give main
+    thread enough CPU to realize main window quickly. Early user
+    keypresses may go to some other window because of this.
+
+commit a3aa97bf7a5528e83601006657a2478e2163d7af
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Dec 25 19:02:39 2009 +0200
+
+    restore fixed height mode which was accidently disabled during osx-work
+
+commit 22579dda14675c2ec2418e86c60a586a3701ab3d
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 14:57:08 2009 +0200
+
+    gpicker v1.1rc3
+
+commit 910f31f5b408ea31910c5fdbbdfe509b515e137f
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 14:55:03 2009 +0200
+
+    define find invocation cmdline in configure
+
+commit a4c44ddfbb50d9443ad83f5a9a36ef4a574c3c74
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 14:40:37 2009 +0200
+
+    gpicker v1.1rc2
+
+commit d277c818ac3f4b6e36694b1b37f640dd5c947cfa
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 14:40:12 2009 +0200
+
+    allow specifying find cmdline via GPICKER_FIND environment variable
+
+commit f20a28dff68f085d12721fe81816b7c105d418c1
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 14:31:02 2009 +0200
+
+    show & center window on OSX early enough
+
+commit 11e369d223a27aa289df3e2cf36e163e150dcfbf
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 14:08:02 2009 +0200
+
+    gpicker v1.1rc1
+
+commit 58e7990880d1c5ce0d068d49149e854c5e572c91
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 14:05:31 2009 +0200
+
+    disable fasteri for now
+
+commit 04db410a800c2b6984626eca02feba56bf42e241
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 14:00:47 2009 +0200
+
+    correctly (hopefully, this time) passing -xobjective-c for OSX builds
+
+commit 16cd138e2225356bdbe9a2b13b82a3aec164c011
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 13:56:13 2009 +0200
+
+    pass -xobjective-c only to compilations
+
+commit 9336c49bad412052d2ab1ac8004ffd9781ff4dc5
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Thu Dec 24 13:53:24 2009 +0200
+
+    include missing <dirent.h>
+
+commit 8d11768c4725404cd2ec9b00b63a47d54ed193a9
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 13:48:35 2009 +0200
+
+    fixed typo
+
+commit 30a282ccf426f31c6ddceb3c88526f18dae5886d
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 13:46:04 2009 +0200
+
+    pass -m32 in CFLAGS
+
+commit 357562092816d99f97dade174bfc9a3a46f10803
+Merge: 5c8c017 6c358ba
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 13:37:46 2009 +0200
+
+    Merge branch 'osx-work'
+
+commit 6c358bac361c20d318ad5d4c579fd407d32f4b15
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 13:37:03 2009 +0200
+
+    better readme for OSX
+
+commit c914f53e9577ccc0b4abe73f28b003e79de8ecf3
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 24 13:34:58 2009 +0200
+
+    osx autodetection on ./configure
+
+commit 335265d8682107930efbae87115ccf4ffa249c85
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Thu Dec 24 12:29:07 2009 +0200
+
+    use native functions for activation and window positioning
+
+commit 6be52eeb29ad37bd847bc06b948b2518d64e1b8b
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Thu Dec 24 10:01:21 2009 +0200
+
+    use proper macros for macos detection
+
+commit 75709826b71244f434268edc5a4a234b55b1bdf8
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Thu Dec 24 09:36:39 2009 +0200
+
+    call AppleScript to activate gpicker window
+
+commit 9c37170fc33e3e65cd066d7d6277d14efeaed52f
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Wed Dec 23 22:32:14 2009 +0200
+
+    temporary comment out read_filenames_from_mlocate_db() function for Darwin systems, because they haven't memrchr() function
+
+commit 8fcc21c6ac7e2a385a30b29f288b2abe732e2dd2
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Wed Dec 23 22:30:21 2009 +0200
+
+    cleanup: resolve problem with gtk library
+
+commit e0b9f2c1975891e5bfc837204bd69ada10c7034b
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Wed Dec 23 22:28:23 2009 +0200
+
+    cleanup: remove .glade file from makefile
+
+commit 51f550ef10432c9792dfaa7186d0b3414858fbe1
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Dec 23 18:13:05 2009 +0200
+
+    use full-featured find invocation for osx too
+
+commit be8f7922652ae2822754628a3806cadf6c0890a3
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Dec 23 18:12:45 2009 +0200
+
+    fix incorrect merge
+
+commit 5c8c017d6381837f236c935ac4d4e6ca30c35604
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Mon Dec 21 19:46:46 2009 +0200
+
+    gpicker.vim: add 'open from here' feature
+
+commit 32363169d4ebbd4779ff0551b22359cfaacf01c9
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Mon Dec 21 19:27:40 2009 +0200
+
+    check parent directories while guessing VCS
+
+commit c7f81c8ef76b053e1c3b7e2c571838b801019734
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Mon Dec 21 17:51:13 2009 +0200
+
+    restrict file list to current directory for VCS
+
+commit 5cc9fd78d7f5860d964c03e31fd25a4ccce355a8
+Merge: 099ebef 4a37f0f
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Dec 19 11:36:52 2009 +0200
+
+    Merge branch 'libglade-removal' into osx-work
+
+commit 4a37f0fa2ab797676a935cf7a1f2820a123993d8
+Merge: c63f9ac 7948592
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Dec 19 11:32:18 2009 +0200
+
+    Merge branch 'fruitless-libglade-removal' into libglade-removal
+
+commit 099ebefbd57eee4cbf78ca0efe382d1737fecdbe
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 17 09:55:55 2009 +0200
+
+    more documentation
+
+commit 3fab13198dcb3cce66806bd761aaffb288ba9be9
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Wed Dec 16 14:34:04 2009 +0200
+
+    initial version that compiles and runs on OSX with native Gtk+
+
+commit c63f9ac9ec7dd1cb759139b9c4fb7421883dcd9e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 13 22:40:35 2009 +0200
+
+    don't kill self when reading from stdin
+
+commit 47567c0c19d58c9f56e89c123762879dde155218
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 13 22:19:23 2009 +0200
+
+    apply init-filter before async filelist loading begins
+
+commit baef99ed480c5d6bdabeac61349e084d4906094f
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 13 22:01:56 2009 +0200
+
+    added missing free call
+
+commit 38fbc5f1ebfe2e483d9d797ba8cd9f0a43405323
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 13 21:49:37 2009 +0200
+
+    moved option variables that don't belong to loading.h back to main.c
+
+commit 09f698ec3476d0cda44819947b9210c85985f25a
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 13 21:46:36 2009 +0200
+
+    use popen from glib which gives me pid that can be killed on abort
+
+commit 0ec334922046901bf79627abffdc7e74ea20b573
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 13 19:41:37 2009 +0200
+
+    implemented async reading of input, so that you can abort it immediately
+
+commit bf7a9975b0b2b67f73ec9aede0337dc3f19156f2
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 13 18:13:18 2009 +0200
+
+    extracted filelist loading into separate file
+
+commit abf872f6f88c851a391a220d0a90ae9eec77a079
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 13 18:13:01 2009 +0200
+
+    added missing #include <sys/types.h> to xmalloc.h that defines size_t
+
+commit e96b3655312ab19b14f267ef1b8a08ecc2a53973
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Wed Dec 9 17:48:57 2009 +0200
+
+    [vim] fix buffer selection
+
+commit ed08b44b0bf63bf71a16491316f81befacba4bee
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Wed Dec 9 17:17:40 2009 +0200
+
+    set initial filter
+
+commit f439269ffcf05cf7b653ef906aa3aa60b5bcdc2c
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Tue Dec 8 13:00:16 2009 +0200
+
+    browse ri documentation via gpicker
+    
+    implements script for building ri index
+    
+    ri wrapper: cache item definitions too
+
+commit 84938112415e1bf2f30855299625d1f075e295b6
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 10 10:12:42 2009 +0200
+
+    added missing #include-s
+
+commit b35f8641d1d171efd3b89fc03eff7da30fc13976
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 10 02:16:20 2009 +0200
+
+    introduced refcounted_str to simplify pattern passing to/from filtration thread
+    
+    Old approach could slowly leak patterns passed to filtration thread
+    (which is harmless for not long-running app).
+    
+    But it also had some race which caused (rare) segfaults. It looked
+    like double free in filtration_idle. I have no idea how it was
+    possible. Anyway, we should be safe now.
+
+commit 8f0303bb93676db688f73cd221766f56c09068aa
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 10 01:48:40 2009 +0200
+
+    implemented xstrdup
+
+commit 9c164524b7505c7696adeae9ab2ca75434e2595d
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Dec 10 01:02:58 2009 +0200
+
+    added comments for filtration thread loop body
+
+commit 98ceb513a55c89bdc5ef311e7f617f3176d1ee46
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Tue Dec 8 09:38:10 2009 +0200
+
+    move buffer ttributes to end of line for better matching
+
+commit 2781f07cbab896bc979f917a3a0cb068e5f3f74b
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Mon Dec 7 15:37:58 2009 +0200
+
+    update vim bindings: choose buffer via gpicker
+
+commit 27d432f5da241deb0e56c091477c108417e1b448
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 7 14:58:30 2009 +0200
+
+    pre-fill filter entry with thing at point in emacs interface
+
+commit d11fdf7516998fd782dffce76713a2f68f60c3c3
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Mon Dec 7 14:56:16 2009 +0200
+
+    added idea about support for non-ascii names
+
+commit 1cbc9048b4829aacc241967a9a11fa2ca156a0ee
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 6 22:58:59 2009 +0200
+
+    updated IDEAS
+
+commit 74c9313a3b265476012796af1c4c17c9ba22d69a
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 6 22:58:55 2009 +0200
+
+    allow users to turn parallel filtration off by undocumented cpp 'define'
+
+commit ee1fc28ceef79d11e7f91744a764df58e12fe0a9
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 6 22:34:09 2009 +0200
+
+    don't include cwd into window title for stdin filtration
+
+commit 609b1b01c20e04ce846bead7e2a45240545705fe
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 6 22:31:22 2009 +0200
+
+    allow specifying initial filter text
+
+commit beb343e1021f8f373f43025e98b7967959bd9517
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 6 20:38:49 2009 +0200
+
+    implemented miltiselect in gpicker itself and in emacs interface
+    
+    Picking 2 files has a special case for emacs interface. One file is
+    opened via #'find-file and second is via #'find-file-other-window, so
+    that you'll see both of them in your frame.
+
+commit 6837540e60a76dca7d275212b4569c5b2ae68c39
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 6 12:23:39 2009 +0200
+
+    removed commented-out debugging code
+
+commit 442c52cfb19557cc2ced59abfe314e99a43cd297
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 6 11:52:04 2009 +0200
+
+    support reading filenames from stdin
+
+commit 9686e7879c278ad22fd790f9e23bb2324ffc6c8c
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 6 11:48:04 2009 +0200
+
+    use proper bazaar name in command-line options help
+
+commit 8b618f3a719d986fadb0a309ca92c58b9110b62c
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 28 11:59:18 2009 +0200
+
+    implemented --disable-{hg,bzr} option
+    
+    so that it's possible to avoid slowdown from "bzr ls" with project
+    type guessing, which is default for emacs and vim.
+
+commit 6dd7fb89f331484996644ef5b422361b987359ea
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 28 11:46:32 2009 +0200
+
+    updated gpicker.el for project type autodetecting in gpicker itself
+
+commit bbf75e288d53a8c895721a526711ea0c53a30a34
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 28 11:27:37 2009 +0200
+
+    added CodingStyle from Linux to document code formatting style of gpicker
+
+commit 8e2ad2e329470a2cf06d1f7e1a4be5439983084c
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 28 11:25:49 2009 +0200
+
+    adjust code formatting and remove superfluous strdup
+
+commit 6286b6acd90536a7c03d3fab9a91546c8a323e97
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat Nov 28 11:23:27 2009 +0200
+
+    don't silently fallback to default project type
+
+commit 0550215c0472127d19b4f98c835b94d1f3d93cc1
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Thu Nov 26 10:04:27 2009 +0200
+
+    Fix description for 'project-type' command line key
+
+commit a4077f3b504f5ed05e3c145b0ee1a9e70a510bb0
+Author: Sergey Avseyev <sergey.avseyev@gmail.com>
+Date:   Wed Nov 25 18:59:09 2009 +0200
+
+    Improve VCS support and autodetection
+    
+    * add two VCS types: mercurial(hg) and bazaar(bzr)
+    * implement VCS autodetection: parameter 'guess'
+    * update exceptions for 'default' mode: exclude Bazaar and CVS artifacts
+    * use 'guess'-mode in vim plugin
+
+commit fce3f5501131ab0a5fc96eb49feffd698ea9f40c
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Nov 8 15:31:15 2009 +0200
+
+    added VIM integration by Sergey Avseyev
+
+commit 5b687876d86166f9d059a3243e2e919f20b32a22
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Nov 8 15:13:07 2009 +0200
+
+    output just filename, not lisp expression
+
+commit 7278b2b0764fb11d714c05851d7814cf0fc649ee
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Sep 10 16:47:35 2009 +0300
+
+    [IDEAS] added note about git submodules support
+
+commit ce66ccdc49010b8a7900a58fd05dc41dcc8f93b5
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 20:46:34 2009 +0300
+
+    updated copyright
+
+commit 6908b187047a7ce868d3a093bc33a5aa052fbd5f
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 17 10:59:18 2009 +0300
+
+    moved filtration to separate thread so that UI is responsive
+
+commit af319c67efd258874d777b84a9d54f83d7d27e96
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 17 10:56:37 2009 +0300
+
+    implemented vector_splice_into
+
+commit 0e3793027fb64f0358607dfc153bec60e2574050
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 17 10:56:21 2009 +0300
+
+    [timing.h] implemented timing_printf which fprints to stderr if timing is enabled
+
+commit 6ddb391a59589ae45f354075cd596da96f287a05
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 23:52:48 2009 +0300
+
+    specialize scorer for single-letter patterns
+
+commit 7999a3e0bafd93ecc6b50595def37be5562f9794
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 22:44:22 2009 +0300
+
+    special case empty pattern filtration for performance
+
+commit f4f0e6dfb23a86e887b9036a2a697cfb9e6d9438
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun May 17 17:27:45 2009 +0300
+
+    do top-sort initially. Full sort is unnecessary.
+
+commit c7b1d24760ce67d93768635f0caede1bad21f771
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 22:36:20 2009 +0300
+
+    removed unused variable
+
+commit c5ee4ad14e1f9df0b9bae6957311ddbe6d308397
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 21:19:28 2009 +0300
+
+    prefilter in scorer by searching for pattern char occurrences
+
+commit 3dbd2b8aa2661296f9e39cfdbd8044021b75029f
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 20:47:06 2009 +0300
+
+    [filtation] using top-sort and prepared patterns
+
+commit 2694959f9cc9b5cb9382959f4b01fdbd5c573d80
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 20:47:03 2009 +0300
+
+    indentation fix
+
+commit 2d3469560079da5a22d05bfb8d8cc986c934895e
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 20:45:34 2009 +0300
+
+    implemented preliminary support for picking from mlocate databases
+
+commit 8838a1420b4068f20fc95f0b9a2754149cdac877
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 20:43:02 2009 +0300
+
+    [scorer] added ability to prepare pattern once and then reuse it
+
+commit bf1793c6fddef41d9e5fb6cfc4546d92cc1dbde8
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 20:41:46 2009 +0300
+
+    added top-sort functinality to inline qsort
+
+commit b6242e394b0f4bab5bc22d69a5d573f09ada274d
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 18:26:04 2009 +0300
+
+    [IDEAS] accepted 1k limit on number of results
+
+commit 94c8e9f7e6981f72f06bd0bbb946d4eb423a047d
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 15:02:58 2009 +0300
+
+    support emacs' flymake
+
+commit 846883376335e044fe1061c4845fa2d2b1dfcb7a
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 14:39:23 2009 +0300
+
+    added mlocate idea
+
+commit 1a7130350696100556c4ea179be4961eacd8c13a
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sat May 16 20:48:00 2009 +0300
+
+    .gitignore-ing emacs TAGS
+
+commit 7948592680df4c5ab313358a4c1f71a673b50c1f
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 7 13:57:10 2008 +0200
+
+    attempted to replace libglade UI building with hand-coded version without improvement of initialization time
+
+commit ea593f2208f2a4b57461c0ac1b4608fbc0237a08
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 7 12:50:51 2008 +0200
+
+    removed unnecessary call to WITH-CURRENT-BUFFER
+
+commit 10f3fb230fa419f7ee4f7a1a43759c884d2f4611
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Sun Dec 7 12:28:19 2008 +0200
+
+    don't hide gpicker-errors.log from user and unlink it after gpicker invokation
+
+commit c9958a1a7d6886150f93d0a365469b4875e90fdb
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Nov 27 06:51:17 2008 +0200
+
+    don't pollute namespace of inline_qsort.h user with `min' macro
+
+commit c5c4f74fb3c8c7974efc542800a72ada411309e4
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Wed Nov 26 15:21:15 2008 +0200
+
+    added separate timing for glade initialization
+
+commit 5be4fbf3333b374ec2153ce87a903a04d3b5fa90
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 20:49:13 2008 +0200
+
+    write errors log to file in home dir, writing errors log to /tmp is unsafe.
+
+commit d905e09261c75ad9b18dba0778ba008ef3b98e5d
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 20:17:31 2008 +0200
+
+    bumped version to 1.0
+
+commit 9bc3eff9f58ff220a7d750fd2f8e34bef7efece9
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 19:13:06 2008 +0200
+
+    better state program's goal of being used from editors in README
+
+commit ea2fd64540dfd9dae8e12c12af50ee0a8fdbebc6
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 17:59:03 2008 +0200
+
+    updated IDEAS
+
+commit e38f4f910f3bf19dcd59b8273e524c08a9d99c69
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 17:37:35 2008 +0200
+
+    license notice and doc for elisp file
+
+commit e8f1dc689a622c69c119cd19b1b0d9a7d6bcfa3b
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 17:00:33 2008 +0200
+
+    license notice for scorer-tests.c
+
+commit 5f7958fac00e0732969d54c98aa284d3bb583024
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 16:56:33 2008 +0200
+
+    written README text
+
+commit 64bc4f29110768a1534d6f1b9db44f6f96d1f0f1
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 13:33:11 2008 +0200
+
+    better description for project type option
+
+commit 1442f702924bfa30777c2e93001c46e5778bbd03
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 13:32:51 2008 +0200
+
+    set initial title to 'Loading filelist'
+
+commit 4e06b8b4d827c72bb0db0f6a2fa0b78b6cf82b74
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 02:40:23 2008 +0300
+
+    completed todo items
+
+commit 4b46241b546c7bf6a35a24c0def2aee0238255af
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 02:30:02 2008 +0300
+
+    added copyright notices
+
+commit 800621a4d4ad9570d22b5786ca3f10761981d8d1
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 01:49:55 2008 +0300
+
+    don't include unused alloca.h in inline_qsort
+
+commit e2e4b66d110988a64636aa370534dd10bb60e14a
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 01:44:22 2008 +0300
+
+    added date to modification notice of copied qsort code
+
+commit bbee7ca01b0741789b2d1ca1c02df55df1c1301e
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 01:43:21 2008 +0300
+
+    switched to gpl v.3
+
+commit 4c501d7ff6e00d63088e2ec785d8cf3a265451d3
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 00:46:25 2008 +0300
+
+    printing usage when being called without args
+
+commit 236b832106552a8dcaed21825fcea94bf5ce82c9
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sun Oct 26 00:28:37 2008 +0300
+
+    setting proper window title
+
+commit 426bc528ab46351dde0d1522a8277d1f48c1f53c
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sat Oct 25 23:31:50 2008 +0300
+
+    writing to /tmp/gpicker-error.log is fine
+
+commit 27a937f6478cd9ed150631d58df5d74f28c3ee44
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sat Oct 25 23:25:24 2008 +0300
+
+    improved filtration performance by around 300% by inlining qsort
+
+commit 889a1fdc6d12a5092f7a4400d1b33758e70a852b
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Sat Oct 25 23:24:57 2008 +0300
+
+    reduced listview limit to 1000
+
+commit eba43ebe59b1415a482a188e28f8dfdc6f6f0308
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Oct 23 09:12:02 2008 +0300
+
+    more todo
+
+commit 96af00f92df6face5163aae9b626aad7c5757ac2
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Oct 23 08:59:37 2008 +0300
+
+    added poor man's documentation for emacs binding
+
+commit 01fe8678edfcfdf2eccb70036317f37a804f398b
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Oct 23 08:55:35 2008 +0300
+
+    added headers to gpicker_SOURCES so that they are included into distribution
+
+commit 563140d8b8ebd886c6ab1369ab9b48e3f7c18a89
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Oct 23 08:49:17 2008 +0300
+
+    added todo entry
+
+commit 33a306c4e4af9ad33600a3564ecb191dd02bcda9
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Oct 23 08:47:32 2008 +0300
+
+    version set to 0.9 for now
+
+commit da36b263a5090f55ac83467ccbd3a2576a399242
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Oct 23 08:43:25 2008 +0300
+
+    bump version to 1.0
+
+commit a95e0d6ab57d26446cb0b3100ac2cef526fe9d45
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Oct 23 08:42:11 2008 +0300
+
+    finished renaming to gpickit
+
+commit b614a8d53f4ce281df1795eebf9a2940ab8c7ac4
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Oct 23 08:37:46 2008 +0300
+
+    first stab at renaming filechooser to gpicker
+
+commit 3f3d8879cae5e48343d8a369492a120f9fb8b0c1
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Oct 23 07:10:07 2008 +0300
+
+    added IDEAS
+
+commit 24acfb7475f2d80256a1b4654787e0916c400ea4
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Oct 23 07:09:25 2008 +0300
+
+    limit result set to 10000 items. This fixes perf. issues on larger projects.
+
+commit 1abc9e11cbc1a961353433daa4ff754041ccf502
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Oct 23 07:09:17 2008 +0300
+
+    fixed typo
+
+commit 600e6a8b7053c8c9feb6bb48dd7663fed1360ebd
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Oct 23 06:05:33 2008 +0300
+
+    todo item completed
+
+commit a52018249b3d067c6a68d65b6ae092f3886a92b7
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Oct 23 05:43:49 2008 +0300
+
+    fixed scoring of empty string
+
+commit c7b861ecb140241a5fa840f86a33028ccef7e737
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Thu Oct 23 05:34:59 2008 +0300
+
+    more tests
+
+commit e8997cffa7ef17d10c0fbff2900494e94c7479a2
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Sep 26 18:06:10 2008 +0300
+
+    split filelist filtration into two parts and moved one part to filtration.[ch]
+
+commit 8a35767d5b37bee993f22f042f7d442f6122e0af
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Sep 26 16:56:50 2008 +0300
+
+    removed unused macro: max
+
+commit d0e99ea0b49e945fc9b351f821706f3818576014
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Sep 26 16:52:31 2008 +0300
+
+    split xmalloc out of main
+
+commit 4f97985e5151fc92fcea61eae0d5735267ac430b
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Tue Sep 23 19:09:19 2008 +0300
+
+    more todo
+
+commit d8a5d8dbac84179915de45db5e5169a6979a1acb
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Sep 26 16:19:30 2008 +0300
+
+    removed old debugging code which caused bug when sorting empty or nearly empty result set
+
+commit dfbee27ec5b75bda1c5e5cbaebb186c10d5235d2
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Fri Sep 26 15:05:06 2008 +0300
+
+    sorted .gitignore and added gtags files to it
+
+commit d8048f170feaf055402e0f994f804883f0a72ba2
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Fri Sep 26 15:03:18 2008 +0300
+
+    split filtration and vector from main file
+
+commit 45dcf279edabe376e184aa0f728129efa937fc00
+Author: Aliaksey Kandratsenka <alk@tut.by>
+Date:   Fri Sep 26 15:54:30 2008 +0300
+
+    elisp: discard input done just before filechooser window appeared
+
+commit 76cc1c9624ab20c360bf795ce278220233a24945
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 14 20:32:06 2008 +0300
+
+    added TODO
+
+commit ff367fa27d4372f45be5f6a975c6e8ae43179c0e
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 14 20:31:41 2008 +0300
+
+    don't list modified files twice
+
+commit e7b4c82e1f9d8d5832e6652ed184b5d5124abeee
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 14 20:20:49 2008 +0300
+
+    close pipes with pclose
+
+commit bba91368abef42ae10d265b19ae5b4b14e52101a
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Wed Sep 10 16:35:54 2008 +0300
+
+    getter git ls-files
+
+commit 8974a87e93919cc16041193b003a14b310bf7311
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Sep 9 12:23:46 2008 +0300
+
+    unset window cursor after filelist is loaded instead of setting incorrect cursor
+
+commit 626516afd6964a2a7e39e01f03bd394bab4893a8
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Sep 9 09:24:23 2008 +0300
+
+    made version 0.6
+
+commit 9b74440a8d8963b59127daa8cdb72f859209a660
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 23:21:18 2008 +0300
+
+    show watch cursor while loading filelist
+
+commit d89abd91950ad3338e5bf57852ccd54645dafce1
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 23:00:50 2008 +0300
+
+    [emacs] handle nil *filechooser-project-dir*
+
+commit f51476c85bdb0ef001db72ded4441c392e38ac0e
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 23:00:33 2008 +0300
+
+    install .el
+
+commit da76cc65daec604c133677dc09001b21541b9bf2
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 22:51:39 2008 +0300
+
+    use filechooser from path
+
+commit 3dd108adf252be655d7e2c9b7134c031cf30cbb9
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 22:51:27 2008 +0300
+
+    fixed handling of empty file list
+
+commit 79a59bf45c9bbc82da19f9057467cb339c778eb9
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 22:45:43 2008 +0300
+
+    pick glade file from datadir
+
+commit 095345e5c52dcf58f554b4f1240bdd239b28fb3b
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 22:45:05 2008 +0300
+
+    better window name
+
+commit 50aa27364a18c109e16464db045c32abfb12cffe
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 21:57:37 2008 +0300
+
+    added support for guessing project type when it's visited
+
+commit 9c9b1dc3b81ab95cc40256fce5308c137854ca9c
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 21:50:01 2008 +0300
+
+    initial support for project types in emacs interface
+
+commit 55bd339a6e8bc236341ee402d0936a77feeed98f
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 21:35:26 2008 +0300
+
+    don't ask file revert confirmation when choosing file if buffer wasn't modified
+
+commit b018a6bfb5bbb806eda1b9e86a06d2e4ec4cedca
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 21:20:08 2008 +0300
+
+    improved error reporting for emacs interface
+
+commit ad5a5eef7696fe21babd4531c38a29b88b2e8f74
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 21:19:33 2008 +0300
+
+    resolve pathes from filechooser relative to project dir
+
+commit 0e56af14585cfe0c9e90e00634b6b5fdc4d083d5
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 20:50:25 2008 +0300
+
+    whitespace cleanup
+
+commit dbf864bf1caa63c870e594fcdd6832c125d0a8b6
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 20:49:57 2008 +0300
+
+    properly escape choosen path for emacs
+
+commit 29a0fbd300da7556f85e771856d03161505b92e0
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 20:41:40 2008 +0300
+
+    made filechooser input filenames without helper ruby program and added support for ignoring .gitignore-ed files
+
+commit 8f4031897902fcbb2e23f1586cb77eff40b006f4
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 19:29:25 2008 +0300
+
+    strip leading ./ from filenames
+
+commit f0a563d0d53a7f13e16e203a65e8563780b2966a
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 19:14:45 2008 +0300
+
+    adjustments
+
+commit 2c41f8472d74e934f973fd091bf66a890926cbd5
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 14:33:38 2008 +0300
+
+    cleaned up timing gathering code, so that it's enabled only if --enable-timing configure option is given
+
+commit 85ee21750237c3978188ad85aa7db2db7e9c4957
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 14:09:22 2008 +0300
+
+    switched to use of config.h
+
+commit bf4bdd71126bb1097a325e1ae916bf7988dc0844
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 13:39:38 2008 +0300
+
+    introduced xmalloc & xrealloc
+
+commit 76a62b889dc0d97ae7a41f0e75849b34615aa4fe
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 10:03:38 2008 +0300
+
+    improved names of dependencies in configure.ac
+
+commit 7e726e9b83ca1a98ac03d4c837bd4cd99be96080
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 09:57:55 2008 +0300
+
+    added bootstrap script for bootstrapping autotools
+
+commit 93a4ac63a3fef0555813ee1c0beebb6b7967776c
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Sun Sep 7 09:55:50 2008 +0300
+
+    made check dependency optional
+
+commit ff8848d046acabb53f905432307b7f8d32ba22a8
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Fri Jun 20 15:47:39 2008 +0300
+
+    small emacs integration fix
+
+commit e52752382adeba8ef78423159bdeccc2c7482652
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Fri Jun 20 15:33:56 2008 +0300
+
+    small fix for emacs integration
+
+commit 74b23c7d2470776a99f3544486363010d8367b6a
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Fri Jun 20 15:30:15 2008 +0300
+
+    initial emacs integration
+
+commit 1b19e61d6050955e2eb537582765903b5d8ed5cd
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Fri Jun 20 13:59:47 2008 +0300
+
+    print selection on exit, don't print timing, read filelist from stdin
+
+commit c35dd4d6d6dbeab8ad55af4dfc71d880a80c97d8
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Fri Jun 13 20:06:56 2008 +0300
+
+    sort order tweak
+
+commit 391060c89ff80ea3848ad4eb528e23ac3dd39107
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Fri Jun 13 19:41:43 2008 +0300
+
+    better sorting, fixed valgrind-reported error
+
+commit 3377c0053266fbbb254ed4e0d882ed191d02212a
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Fri Jun 13 18:34:41 2008 +0300
+
+    plugged a leak
+
+commit bd4171bcc2475816c72491385a15766713f13496
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Jun 12 02:49:40 2008 +0300
+
+    fixed match highlighting
+
+commit 9ae489e75e89211dd911f30023be563ba3748a32
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Jun 12 02:36:47 2008 +0300
+
+    match highlighting
+
+commit f94507ee55deafaf994e3ed8372c7460aff14e71
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Thu Jun 12 00:48:41 2008 +0300
+
+    separated dirname and basename filtering
+
+commit 2b29f6f5bcd39f7db5826f20726c6ce812ea02cf
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Wed Jun 11 15:46:05 2008 +0300
+
+    implemented right match
+
+commit 767beeeeb5b86b815fd4268b054a114386436b44
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Wed Jun 11 00:14:15 2008 +0300
+
+    fixed sort order
+
+commit 4544ec2f1efbbdf67151e76a72dc81168b3ccdf1
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Jun 10 23:57:52 2008 +0300
+
+    sorting filtered list
+
+commit 0ee784ff2dd1ad42cdd0b98f5b6a94dea4082d0e
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Jun 10 22:48:41 2008 +0300
+
+    futher development
+
+commit 6255fceed07a3ee7ee37a29cd6d3a4c54a0ba3e3
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Jun 10 21:40:28 2008 +0300
+
+    further development
+
+commit ebf2ca25b34254d42c646a2ef7f7b76d3a9b4c9e
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Jun 10 18:04:37 2008 +0300
+
+    small fix
+
+commit 92b87d0704ad092d42830f925be54aacbba9334c
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Jun 10 17:39:33 2008 +0300
+
+    slight optimizations
+
+commit a6399784e71e5da2f280832b2678d60fec275f87
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Jun 10 16:20:43 2008 +0300
+
+    fixed warning
+
+commit 969c3f5dbe0243bc73ea26c6147f6c9959edb6bc
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Jun 10 02:19:50 2008 +0300
+
+    got initial data on screen
+
+commit 29f32b15ca833a1c981910b936c9593ba6d176ac
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Tue Jun 10 00:22:55 2008 +0300
+
+    fixed filenamess reading
+
+commit d12617ca27aaa57b987007d2a0b1ecd095855734
+Author: Aliaksey Kandratsenka <alekseyk@nettoo.com>
+Date:   Mon Jun 9 21:59:51 2008 +0300
+
+    reading pathnames from stdin
+
+commit 2e39fcd2ed6359be01f5ef68863bf2381c6b7100
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 18:01:59 2008 +0300
+
+    killed SUPER_PROPER_WORD_START in favor of correct value of PROPER_WORD_START
+
+commit 2efd3a78bb21ed39483fa9d1ccd47f9c38dac118
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 17:45:09 2008 +0300
+
+    reimplemented handling if pattern char after delimiter
+
+commit 61359358c1fe92b39cd93448e5aa6eb7380f6af5
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 16:53:04 2008 +0300
+
+    more tests
+
+commit 0c7c05b73ea3e282d33ea0a6f5d347f3e5b657d5
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 17:24:17 2008 +0300
+
+    small refactoring
+
+commit fe7a096a21ba717af6fd4b1d88657daee4090cb4
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 16:40:11 2008 +0300
+
+    introduced scorer_query and const'ified args
+
+commit c3a25315eb508815334747c2012b512332daf8fa
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 16:36:21 2008 +0300
+
+    added scorer-tests to .gitignore
+
+commit d17ab8402011291b21eb3c1852c15ceac52b8d0e
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 16:35:56 2008 +0300
+
+    expose ____empty_printf only if it's used
+
+commit cd8d2ffce60cd1b5fa0eddb0e2c23435afe4fc8a
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 16:34:37 2008 +0300
+
+    translated_pattern is not NUL-terminated string
+
+commit 8ef7c63529a74f4b9072721ba69104f5f44ed1dc
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 16:32:57 2008 +0300
+
+    added gitignore
+
+commit a7c51b782a8f1e5e2e6ffe58b13d792ef31fd819
+Author: Aliaksey Kandratsenka <aliaksey@alk.gsn>
+Date:   Mon Jun 9 16:30:20 2008 +0300
+
+    initial commit

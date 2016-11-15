@@ -1,0 +1,5 @@
+gpicker (@DEB_VERSION@-1) unstable; urgency=low
+
+  * Auto-packaged @DEB_VERSION@
+
+ -- Aliaksey Kandratsenka <alk@tut.by>  @DATE@
