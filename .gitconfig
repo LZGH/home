@@ -1,8 +1,0 @@
-[user]
-	email = 1183071782@qq.com
-	name = LZGH
-[alias]
-	ci = commit -m
-	ps = push origin master
-	pl = pull origin master
-	al = git add -A
