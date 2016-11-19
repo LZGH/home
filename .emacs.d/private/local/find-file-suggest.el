@@ -113,7 +113,7 @@
 
 (defvar ffs-mode nil)
 (defvar ffs-initialized nil)
-(defvar ffs-buffer-name "*Indexed files matching your query*")
+(defvar ffs-buffer-name "*find-file-suggest*")
 (defvar ffs-file-indexes nil); alist of (file-index-name . (dir include-filter exclude-filter file-index))
                              ; where file-index is: alist of (file . n_visited)
 (defvar ffs-current-file-index-name nil)
