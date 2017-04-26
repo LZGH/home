@@ -10,6 +10,10 @@ pip/
 .gem/
 .cpanm/
 .bundle/
+.pylint.d/
+.ipython/
+.jupyter/
+.matplotlib/
 .emacs.d/layers/
 .emacs.d/.cache/
 .emacs.d/.github/

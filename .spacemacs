@@ -5,9 +5,11 @@
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides
-Start checking fbexac-apInvalid face reference: quoteply: Spawning child Invalid face reference: quote [22 times]
-setcdr: Wrong type argument: number-or-marker-p, nilInvalid face reference: quote
-Invalid face reference: quote [12 times]process: Invalid argumentjs2-setup-auto-completeac-define-source-mode: Invalid function: ac-define-source
+Start checking fbexac-apInvalid face reference: quoteplvia the OS X Notiy: Spawning child Iemacs
+    f:/emacsnvalid face reference: quote [22 times]
+setcdr: Wrong typ
+e argument: number-or-marker-p, nilInvalid face reference: quote
+Invorg-link-typesalid face reference: quote [12 times]process: Invalid argumentjs2-setup-auto-completeac-define-source-mode: Invalid function: ac-define-source
     ~/.emacs.d/private/local/merriam.elSkPreparing diary...doneipping check for new version (reason: dotfile)es.d/diary
     ~/.spa apphelm-autoresize-modely: Searching fo    f:/emacs/use.htmlr program: No such file or (No changes need to be saved)directory, fauto-completeirefoxc/emacsor neshow
 -paren-modew version...shi.plo-complete-insevil-states(overwrite-moevilifyde t)tall-dirmodifying tnit-switch-windowhe variause-packageble
@@ -31,14 +33,16 @@ values."
      ;; ----------------------------------------------------------------
      ;; better-defaults
      ;;git
-     ;; 
+     ;;
      ;; org
      ;; spell-checking
      ;; version-control
      emacs-lisp
-	   auto-completion
-     python
+	 	 auto-completion
+     ;;python
      markdown
+     erc
+	   python
      ;;emoji
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
 
@@ -46,7 +50,7 @@ values."
              shell-default-height 30
              shell-default-position 'bottom)
      syntax-checking
-	
+
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -67,15 +71,26 @@ values."
                                       emmet-mode
                                       sr-speedbar
                                       helm-gtags
+                                      importmagic
+                                      ;;elpy
+                                      ;;py-autopep8
+                                      ;;ein
+                                      ;;websocket
+                                      ;;request
+                                      ;;auto-complete
+                                      smartrep
+                                      flycheck
+                                      ;;flycheck-pyflakes
+                                      ox-reveal
+                                      htmlize
+                                      ob-ipython
    )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
                                     org-octopress
-                                    ox-reveal
                                     session
                                     git
                                     coffee-mode
-                                    auto-complete
                                     json-mode
 																		fiplr
    )
@@ -277,7 +292,11 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
-;;myInit start
+  ;;myInit start
+   ;; (with-eval-after-load 'evil
+     ;; (global-set-key (kbd "C-z") 'evil-force-normal-state))
+
+
   ;;(setq-default git-magit-status-fullscreen t)
 
 ;;myInit end
@@ -291,7 +310,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
- 
+
 ;;myConfig start
 
 (push "~/.emacs.d/private/local/" load-path)
@@ -306,18 +325,22 @@ you should place your code here."
 (make-variable-buffer-local 'whole-line-or-region-mode)
 
 ;;(global-git-commit-mode t)
-(global-auto-complete-mode)
 (global-company-mode)
 (global-flycheck-mode)
 (delete-selection-mode 1)
-
-
 (global-font-lock-mode t)
+
 
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 
+(add-hook 'python-mode-hook 'importmagic-mode)
+
+(use-package init-python)
+
 (use-package init-ox-publish)
+
+(use-package init-erc)
 
 (use-package base-init)
 
@@ -334,6 +357,12 @@ you should place your code here."
 (use-package init-helm-gtags)
 
 (use-package init-sr-speedbar)
+
+(defun my-company-mode-hook ()
+  (company-mode -1))
+
+(add-hook 'org-mode-hook 'my-company-mode-hook)
+(add-hook 'python-hook 'my-company-mode-hook)
 
 (use-package merriam
 	:bind ("<f5>" . merriam)
@@ -355,7 +384,7 @@ you should place your code here."
   ("C-c f" . find-file-suggest)
 	("C-c g" . ffs-use-file-index)
   )
-  
+
 (use-package flymd
   :init (defun my-flymd-browser-function (url)
           (let ((browse-url-browser-function 'browse-url-firefox))
@@ -400,11 +429,11 @@ you should place your code here."
   :init (setq markdown-command "multimarkdown"))
 
 ;; Various preferences
-(setq 
+(setq
   ;; turn on the syntax highlight in the org mode
-  org-src-fontify-natively t 
+  org-src-fontify-natively t
   ;; when exporting the org file, do not evaluate the code block if the exports header is both
-  org-export-babel-evaluate nil 
+  org-export-babel-evaluate nil
   ;; skip the confirmation step when evaluate a code block
   org-confirm-babel-evaluate nil)
 
@@ -426,15 +455,37 @@ you should place your code here."
 (setq org-clock-persist 'history)
 (org-clock-persistence-insinuate)
 
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous))
+
 ;; org-mode自动换行
 (global-set-key [f12] 'toggle-truncate-lines)
 (global-set-key (kbd "M-/") 'yas/expand)
 ;; org-mode缩进
 (setq org-startup-indented t)
+(electric-pair-mode t)
+
+(setq skeleton-pair-alist
+      '((?\" _ "\"" >)
+        (?\' _ "\'" >)
+		(?\“ _ "\”" >)
+		(?\‘ _ "\’" >)))
+
+(setq skeleton-pair t)
+
+;; 绑定全局键值
+;; 也可以绑定单独到某个mode，比如cc-mode (define-key cc-mode-map (kbd "(") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\'") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\"") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\“") 'skeleton-pair-insert-maybe)
+(global-set-key (kbd "\‘") 'skeleton-pair-insert-maybe)
+
 
 (global-set-key (kbd "C-k") 'delete-backward-char)
 (global-set-key (kbd "M-k") 'backward-kill-word)
-
 ;;mark set
 (global-set-key (kbd "C-M-,") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
@@ -482,6 +533,11 @@ you should place your code here."
   ("C-h i" . helm-info-at-point)
   )
 
+(use-package ox-reveal
+  :init
+  (setq org-reveal-root "file:///F:/emacs25/libexec/emacs/25.0.94/home/.emacs.d/private/reveal.js-3.3.0/"))
+
+
 ;; (use-package auto-save
 ;;   :init
 ;;   (setq auto-save-slient t)
@@ -522,11 +578,6 @@ you should place your code here."
 ;;   )
 
 
-;; (use-package ox-reveal
-;;   :init
-;;   (setq org-reveal-root "file:///F:/emacs25/libexec/emacs/25.0.94/home/.emacs.d/private/reveal.js-3.3.0/"))
-
-
 ;;org-octopress
 ;; (use-package org-octopress
 ;;   :init
@@ -555,12 +606,11 @@ you should place your code here."
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
+ '(evil-toggle-key "")
+ '(helm-gtags-auto-update t)
+ '(helm-gtags-ignore-case t)
+ '(helm-gtags-path-style (quote relative))
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
- '(highlight-symbol-colors
-   (--map
-    (solarized-color-blend it "#002b36" 0.25)
-    (quote
-     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
  '(highlight-symbol-foreground-color "#93a1a1")
  '(highlight-tail-colors
    (quote
@@ -585,10 +635,18 @@ you should place your code here."
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(package-selected-packages
    (quote
-    (cygwin-mount fiplr grizzl sr-speedbar helm-gtags emmet-mode web-mode emoji-cheat-sheet-plus company-emoji org-bullets json-mode json-snatcher json-reformat coffee-mode ac-js2 skewer-mode js2-mode simple-httpd flymd mmm-mode markdown-toc markdown-mode gh-md org-octopress ctable orglue org-mac-link epic htmlize pyvenv pytest pyenv-mode py-yapf pip-requirements hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic f switch-window whole-line-or-region ibuffer-projectile session ox-reveal ace-jump-mode xterm-color shell-pop multi-term eshell-prompt-extras esh-help flycheck-pos-tip flycheck helm-company helm-c-yasnippet company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete zenburn-theme monokai-theme solarized-theme smeargle orgit magit-gitflow helm-gitignore request gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger evil-magit magit magit-popup git-commit with-editor ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme)))
+    (importmagic epc concurrent deferred ob-ipython dash-functional material-theme smartrep ein websocket py-autopep8 flycheck-pyflakes elpy find-file-in-project ivy erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks cygwin-mount fiplr grizzl sr-speedbar helm-gtags emmet-mode web-mode emoji-cheat-sheet-plus company-emoji org-bullets json-mode json-snatcher json-reformat coffee-mode ac-js2 skewer-mode js2-mode simple-httpd flymd mmm-mode markdown-toc markdown-mode gh-md org-octopress ctable orglue org-mac-link epic htmlize pyvenv pytest pyenv-mode py-yapf pip-requirements hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic f switch-window whole-line-or-region ibuffer-projectile session ox-reveal ace-jump-mode xterm-color shell-pop multi-term eshell-prompt-extras esh-help flycheck-pos-tip flycheck helm-company helm-c-yasnippet company-statistics company-quickhelp pos-tip company auto-yasnippet yasnippet ac-ispell auto-complete zenburn-theme monokai-theme solarized-theme smeargle orgit magit-gitflow helm-gitignore request gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger evil-magit magit magit-popup git-commit with-editor ws-butler window-numbering volatile-highlights vi-tilde-fringe spaceline s powerline smooth-scrolling restart-emacs rainbow-delimiters popwin persp-mode pcre2el paradox hydra spinner page-break-lines open-junk-file neotree move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-args evil-anzu anzu eval-sexp-fu highlight elisp-slime-nav define-word clean-aindent-mode buffer-move bracketed-paste auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build use-package which-key bind-key bind-map evil spacemacs-theme)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
- '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
+ '(speedbar-hide-button-brackets-flag t)
+ '(speedbar-show-unknown-files t)
+ '(speedbar-smart-directory-expand-flag t)
+ '(speedbar-use-images nil)
+ '(sr-speedbar-auto-refresh nil)
+ '(sr-speedbar-max-width 30)
+ '(sr-speedbar-right-side nil)
+ '(sr-speedbar-skip-other-window-p t)
+ '(sr-speedbar-width 20)
  '(term-default-bg-color "#002b36")
  '(term-default-fg-color "#839496")
  '(vc-annotate-background nil)

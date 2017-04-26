@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: ipython block
+# key: <si
+# --
+#+BEGIN_SRC ipython :session mysession :file ${2:$$(let ((temporary-file-directory "./ipython-img/")) (make-temp-file "py" nil ".png"))} :exports both
+%matplotlib inline
+$0
+#+END_SRC

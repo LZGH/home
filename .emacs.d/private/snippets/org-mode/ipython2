@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ipython block without img
+# key: <ss
+# --
+#+BEGIN_SRC ipython :session mysession :exports both
+$0
+#+END_SRC
